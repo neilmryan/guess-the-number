@@ -11,30 +11,19 @@ let guessField = document.querySelector('.guessField');
 let guess_record = document.querySelector('#guesses');
 let guess_status = document.querySelector('#guess_status');
 let guesses_left = document.querySelector('#guesses_left');
-let play_again = document.querySelector('h2');
+let play_again = document.getElementById('play_again');
+let again_button = document.createElement('button');
+let label_inst = document.getElementById('label_inst');
 
 $(guessSubmit).click(function (e) {
     guess = Number(guessField.value);
     turn(guess);
-    //guessField.setAttribute("value", "");
 });
 
 // Generate a random number between 1 & 100 inclusive
 function randomNumber() {
   num = Math.floor(Math.random() * 100) + 1;
   return num;
-};
-// Start the game and check game state
-function gamePlay() {
-  while (guesses.length < num_of_guesses && !gameWon) {
-
-  };
-  if (gameWon) {
-    playAgain();
-  } else {
-    alert("You have reached " + num_of_guesses + " guesses. GAME OVER!");
-    playAgain();
-  };
 };
 
 // function to execute a single turn of the game
@@ -69,15 +58,21 @@ function checkGuess(num) {
 };
 
 function playAgain() {
-  alert("Play Again?");
+  label_inst.textContent= "";
+  guesses_left.textContent= "";
+  guess_record.visibility= "none";
+  guess_status.visibility= "none";
+  guessField.style.visibility= "hidden";
+  guessSubmit.style.visibility= "hidden";
+  play_again.classList.add("play_again");
+  play_again.textContent = "Would you like to play again?";
+  again_button.textContent="Click Me";
+  play_again.appendChild(again_button);
+  $(again_button).click(function () {
+    alert("I was clicked!");
+    location.reload();
+  })
 };
 
 //sets the cursor blinking in the inout field
 $('.guessField').focus();
-
-
-/*
-$("body").hover(function() {
-  $("body").css("color","blue");
-});
-*/
