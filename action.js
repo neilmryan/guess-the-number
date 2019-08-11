@@ -4,6 +4,20 @@ let guesses = [];
 let random = randomNumber();
 let gameWon = false;
 let num_of_guesses = 5;
+let guess = "";
+
+let guessSubmit = document.querySelector('.guessSubmit');
+let guessField = document.querySelector('.guessField');
+let guess_record = document.querySelector('#guesses');
+let guess_status = document.querySelector('#guess_status');
+let guesses_left = document.querySelector('#guesses_left');
+let play_again = document.querySelector('h2');
+
+$(guessSubmit).click(function (e) {
+    guess = Number(guessField.value);
+    turn(guess);
+    //guessField.setAttribute("value", "");
+});
 
 // Generate a random number between 1 & 100 inclusive
 function randomNumber() {
@@ -13,7 +27,7 @@ function randomNumber() {
 // Start the game and check game state
 function gamePlay() {
   while (guesses.length < num_of_guesses && !gameWon) {
-    turn();
+
   };
   if (gameWon) {
     playAgain();
@@ -25,40 +39,37 @@ function gamePlay() {
 
 // function to execute a single turn of the game
 function turn() {
-  let guess = prompt("What is your number to guess?");
-  guess = Number(guess);
   checkGuess(guess);
   guesses.push(guess);
-  console.log(guesses);
+  guess_record.textContent = 'Your Guesses: ' + guesses;
 };
 
 // compare input guess value against the random number
 function checkGuess(num) {
   if (num === random) {
-    alert("YOU GUESSED IT! CONGRATULATIONS!");
+    guess_status.textContent = "CONGRATULATIONS! YOU GUESSED THE NUMBER!";
     gameWon = true;
-
+    playAgain();
   } else if (num > random) {
-    alert("WRONG! Your number is too high!");
+    guess_status.textContent = "WRONG, TOO HIGH!";
     console.log(num);
     console.log(random);
   } else {
-    alert("WRONG! Your number is too low!");
+    guess_status.textContent = "WRONG, TOO LOW!";
     console.log(num);
     console.log(random);
   };
+  guessField.value = "";
+  num_of_guesses--;
+  guesses_left.textContent = "You have " + num_of_guesses + " guesses left!"
+  if (!gameWon && num_of_guesses === 0) {
+    guess_status.textContent = "NO MORE GUESSES GAME OVER!";
+    playAgain();
+  }
 };
 
 function playAgain() {
-  let choice = prompt("Would you like to play again?: (Y/N)");
-  console.log(choice);
-  if (choice === "Y" || choice === "y") {
-    guesses.length = 0;
-    gameWon = false;
-    gamePlay();
-  } else {
-    alert("Have a wonderful day!");
-  }
+  alert("Play Again?");
 };
 
 //sets the cursor blinking in the inout field
