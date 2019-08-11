@@ -15,9 +15,18 @@ let play_again = document.getElementById('play_again');
 let again_button = document.createElement('button');
 let label_inst = document.getElementById('label_inst');
 
+//Event Listener to trigger checkGuess function on click.
 $(guessSubmit).click(function (e) {
     guess = Number(guessField.value);
     turn(guess);
+});
+//Event Listener to trigger checkGuess function on kepress code "Enter".
+$(guessField).keypress(function (e) {
+  let key = e.code;
+  if (key === "Enter") {
+    guess = Number(guessField.value);
+    turn(guess);
+  }
 });
 
 // Generate a random number between 1 & 100 inclusive
