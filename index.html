@@ -6,32 +6,44 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>GUESS THE NUMBER</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+      <div class="container">
+        <div class="row">
+          <h1>GUESS THE NUMBER!</h1>
+        </div>
+        <div class="row">
+          <h2>We have selected a number: 1 through 100</h2>
+        </div>
+        <div class="row">
+          <h2>You will be told if your guess is higher or lower</h2>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <label for="guessField">Enter your number to guess!</label>
+          </div>
+          <div class="col-sm">
+            <div id="inputs">
+              <input type="text" id="guessField" class="guessField">
+              <input type="submit" value="Guess" class="guessSubmit">
+            </div>
+          </div>
+          <div class="col-sm">
+            <p>You get 5 guesses.</p>
+          </div>
+        </div>
+      </div>
 
-        <h1>GUESS THE NUMBER!</h1>
-
-        <p>We have selected a number between 1 & 100 (inclusive)</p>
-        <p>Try to guess the number in as few guesses as possible.</p>
-        <p>You will be told if your guess is higher or lower than the random number.</p>
-
-        <h2>Enter your guess submit</h2>
-        <input type="text" name="Number" value="">
-        <input type="submit">
-
-
-
-        
-            
-
-
-        <script src="action.js" async defer></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="action.js" async defer></script>
     </body>
 </html>
