@@ -16,12 +16,12 @@ let again_button = document.createElement('button');
 let label_inst = document.getElementById('label_inst');
 
 //Event Listener to trigger checkGuess function on click.
-$(guessSubmit).click(function (e) {
-    guess = Number(guessField.value);
-    turn(guess);
+$(guessSubmit).click(function(e) {
+  guess = Number(guessField.value);
+  turn(guess);
 });
 //Event Listener to trigger checkGuess function on kepress code "Enter".
-$(guessField).keypress(function (e) {
+$(guessField).keypress(function(e) {
   let key = e.code;
   if (key === "Enter") {
     guess = Number(guessField.value);
@@ -67,18 +67,17 @@ function checkGuess(num) {
 };
 
 function playAgain() {
-  label_inst.textContent= "";
-  guesses_left.textContent= "";
-  guess_record.visibility= "none";
-  guess_status.visibility= "none";
-  guessField.style.visibility= "hidden";
-  guessSubmit.style.visibility= "hidden";
+  label_inst.textContent = "";
+  guesses_left.style.visibility = "hidden";
+  guess_record.visibility = "none";
+  guess_status.visibility = "none";
+  guessField.style.visibility = "hidden";
+  guessSubmit.style.visibility = "hidden";
   play_again.classList.add("play_again");
-  play_again.textContent = "Would you like to play again?";
-  again_button.textContent="Click Me";
+  play_again.textContent = "Play again?";
+  again_button.textContent = "Click Me";
   play_again.appendChild(again_button);
-  $(again_button).click(function () {
-    alert("I was clicked!");
+  $(again_button).click(function() {
     location.reload();
   })
 };
