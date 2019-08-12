@@ -45,7 +45,7 @@ function turn() {
 // compare input guess value against the random number
 function checkGuess(num) {
   if (num === random) {
-    guess_status.textContent = "CONGRATULATIONS! YOU GUESSED THE NUMBER!";
+    guess_status.textContent = "YOU WIN! YOU GUESSED IT!";
     gameWon = true;
     playAgain();
   } else if (num > random) {
