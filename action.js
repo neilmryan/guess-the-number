@@ -13,6 +13,7 @@ let guess_status = document.querySelector('#guess_status');
 let guesses_left = document.querySelector('#guesses_left');
 let play_again = document.getElementById('play_again');
 let again_button = document.createElement('button');
+let number_reveal = document.createElement('p');
 let label_inst = document.getElementById('label_inst');
 
 //Event Listener to trigger checkGuess function on click.
@@ -76,7 +77,9 @@ function playAgain() {
   play_again.classList.add("play_again");
   play_again.textContent = "Play again?";
   again_button.textContent = "Click Me";
+  number_reveal.textContent = random;
   play_again.appendChild(again_button);
+  play_again.prepend(number_reveal);
   $(again_button).click(function() {
     location.reload();
   })
